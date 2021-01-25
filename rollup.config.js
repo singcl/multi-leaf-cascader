@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import typescript from 'rollup-plugin-typescript';
+import less from 'rollup-plugin-less';
 import pkg from './package.json';
 
 export default [
@@ -29,7 +30,8 @@ export default [
 		input: 'src/main.ts',
 		external: ['ms'],
 		plugins: [
-			typescript() // so Rollup can convert TypeScript to JavaScript
+			typescript(), // so Rollup can convert TypeScript to JavaScript
+			less() // generate css will be auto insert to the head tag if you set insert be true
 		],
 		output: [
 			{ file: pkg.main, format: 'cjs' },
