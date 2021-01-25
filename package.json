@@ -1,6 +1,6 @@
 {
   "name": "multi-leaf-cascader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/multi-leaf-cascader.cjs.js",
   "module": "dist/multi-leaf-cascader.esm.js",
   "browser": "dist/multi-leaf-cascader.umd.js",
