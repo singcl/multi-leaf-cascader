@@ -1,7 +1,7 @@
 import * as React from "react";
 import arrayTreeFilter from "array-tree-filter";
 import { CascaderOption, CascaderFieldNames } from "./Cascader";
-import Checkbox from 'rc-checkbox'
+import Checkbox from "rc-checkbox";
 
 interface MenusProps {
   value?: (string | number)[];
@@ -39,7 +39,7 @@ interface MenuItems {
 class Menus extends React.Component<MenusProps> {
   menuItems: MenuItems = {};
 
-  delayTimer: number;
+  delayTimer: number | null = null;
 
   static defaultProps: MenusProps = {
     options: [],
@@ -75,6 +75,7 @@ class Menus extends React.Component<MenusProps> {
       expandIcon,
       loadingIcon,
       value,
+      onChecked,
     } = this.props;
     const onSelect = this.props.onSelect.bind(this, option, menuIndex);
     const onItemDoubleClick = this.props.onItemDoubleClick.bind(
@@ -145,9 +146,10 @@ class Menus extends React.Component<MenusProps> {
             checked={value && value.some((v) => v === option.value)}
             onChange={(e: any) => {
               const checked = e.target.checked;
-              this.props.onChecked(option, checked, menuIndex, e);
+              typeof onChecked === "function" &&
+                onChecked(option, checked, menuIndex, e);
             }}
-            style={{marginRight: '3px'}}
+            style={{ marginRight: "3px" }}
           />
         )}
 
@@ -207,7 +209,7 @@ class Menus extends React.Component<MenusProps> {
     return activeValue[menuIndex] === option[this.getFieldName("value")];
   }
 
-  saveMenuItem = (index) => (node) => {
+  saveMenuItem = (index: number) => (node: any) => {
     this.menuItems[index] = node;
   };
 

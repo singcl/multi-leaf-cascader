@@ -34,7 +34,7 @@ export function isEqualArrays(arrA: any[], arrB: any[]): boolean {
 export function getAllLeafOptions<T extends WC>(options: Array<T>) {
   const result: Array<WC> = [];
   function getLeaf<U extends WC>(options: Array<U>) {
-    options.forEach((item) => {
+    options.forEach(item => {
       if (item.children && item.children.length > 0) {
         getLeaf(item.children);
       } else {
@@ -74,13 +74,13 @@ export function getEntityChainList<U extends WC>(options: Array<U>, v: Cvalue) {
 
       //  发现，立即返回
       if (itm.value === v) {
-        reulst.push(itm.value || "");
+        reulst.push(itm.value || '');
         return;
       }
       // 发现，子类包含，也立即返回；
       let children = itm.children;
       if (children && children.length > 0 && isContain(children, v)) {
-        reulst.push(itm.value || "");
+        reulst.push(itm.value || '');
         getTargetList(children, v);
         return;
       }
