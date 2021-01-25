@@ -1,8 +1,6 @@
 'use strict';
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+var _typeof = require("@babel/runtime/helpers/typeof");
 
 Object.defineProperty(exports, '__esModule', {
   value: true
@@ -10,15 +8,15 @@ Object.defineProperty(exports, '__esModule', {
 
 var React = require('react');
 
-require('rc-trigger');
+var Trigger = require('rc-trigger');
 
 var KeyCode = require('rc-util/lib/KeyCode');
 
 var arrayTreeFilter = require('array-tree-filter');
 
-require('rc-checkbox');
+var Checkbox = require('rc-checkbox');
 
-require('rc-select');
+var Select = require('rc-select');
 
 function _interopDefaultLegacy(e) {
   return e && _typeof(e) === 'object' && 'default' in e ? e : {
@@ -26,9 +24,15 @@ function _interopDefaultLegacy(e) {
   };
 }
 
+var Trigger__default = /*#__PURE__*/_interopDefaultLegacy(Trigger);
+
 var KeyCode__default = /*#__PURE__*/_interopDefaultLegacy(KeyCode);
 
 var arrayTreeFilter__default = /*#__PURE__*/_interopDefaultLegacy(arrayTreeFilter);
+
+var Checkbox__default = /*#__PURE__*/_interopDefaultLegacy(Checkbox);
+
+var Select__default = /*#__PURE__*/_interopDefaultLegacy(Select);
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -72,6 +76,22 @@ function __extends(d, b) {
 
   d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
+
+var _assign = function __assign() {
+  _assign = Object.assign || function __assign(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+
+      for (var p in s) {
+        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+    }
+
+    return t;
+  };
+
+  return _assign.apply(this, arguments);
+};
 
 function __rest(s, e) {
   var t = {};
@@ -143,10 +163,10 @@ function getAllLeafOptions(options) {
   getLeaf(options);
   return result;
 }
+
+var Menus =
 /** @class */
-
-
-(function (_super) {
+function (_super) {
   __extends(Menus, _super);
 
   function Menus() {
@@ -204,7 +224,7 @@ function getAllLeafOptions(options) {
       menuItemCls += " " + prefixCls + "-menu-item-expand";
 
       if (!option.loading) {
-        expandIconNode = /*#__PURE__*/React.createElement("span", {
+        expandIconNode = React.createElement("span", {
           className: prefixCls + "-menu-item-expand-icon"
         }, expandIcon);
       }
@@ -243,7 +263,7 @@ function getAllLeafOptions(options) {
       title = option[this.getFieldName("label")];
     }
 
-    return /*#__PURE__*/React.createElement("li", _extends({
+    return React.createElement("li", _assign({
       key: option[this.getFieldName("value")],
       className: menuItemCls,
       title: title
@@ -252,7 +272,7 @@ function getAllLeafOptions(options) {
       onMouseDown: function onMouseDown(e) {
         return e.preventDefault();
       }
-    }), !hasChildren && /*#__PURE__*/React.createElement(Checkbox, {
+    }), !hasChildren && React.createElement(Checkbox__default['default'], {
       checked: value && value.some(function (v) {
         return v === option.value;
       }),
@@ -338,8 +358,8 @@ function getAllLeafOptions(options) {
     var _a = this.props,
         prefixCls = _a.prefixCls,
         dropdownMenuColumnStyle = _a.dropdownMenuColumnStyle;
-    return /*#__PURE__*/React.createElement("div", null, this.getShowOptions().map(function (options, menuIndex) {
-      return /*#__PURE__*/React.createElement("ul", {
+    return React.createElement("div", null, this.getShowOptions().map(function (options, menuIndex) {
+      return React.createElement("ul", {
         className: prefixCls + "-menu",
         key: menuIndex,
         style: dropdownMenuColumnStyle
@@ -360,7 +380,7 @@ function getAllLeafOptions(options) {
     expandTrigger: "click"
   };
   return Menus;
-})(React.Component);
+}(React.Component);
 
 var BUILT_IN_PLACEMENTS = {
   bottomLeft: {
@@ -396,9 +416,10 @@ var BUILT_IN_PLACEMENTS = {
     }
   }
 };
-/** @class */
 
-(function (_super) {
+var Cascader =
+/** @class */
+function (_super) {
   __extends(Cascader, _super);
 
   function Cascader(props) {
@@ -813,11 +834,11 @@ var BUILT_IN_PLACEMENTS = {
         restProps = __rest(_a, ["prefixCls", "transitionName", "popupClassName", "options", "disabled", "builtinPlacements", "popupPlacement", "children", "dropdownRender"]); // Did not show popup when there is no options
 
 
-    var menus = /*#__PURE__*/React.createElement("div", null);
+    var menus = React.createElement("div", null);
     var emptyMenuClassName = '';
 
     if (options && options.length > 0) {
-      menus = /*#__PURE__*/React.createElement(Menus, _extends({}, this.props, {
+      menus = React.createElement(Menus, _assign({}, this.props, {
         fieldNames: this.getFieldNames(),
         defaultFieldNames: this.defaultFieldNames,
         activeValue: this.state.activeValue,
@@ -836,7 +857,7 @@ var BUILT_IN_PLACEMENTS = {
       popupNode = dropdownRender(menus);
     }
 
-    return /*#__PURE__*/React.createElement(Trigger, _extends({
+    return React.createElement(Trigger__default['default'], _assign({
       ref: this.saveTrigger
     }, restProps, {
       popupPlacement: popupPlacement,
@@ -872,7 +893,7 @@ var BUILT_IN_PLACEMENTS = {
     expandIcon: '>'
   };
   return Cascader;
-})(React.Component); // TODO: 提供通用的Props， 目前没时间先这样写死
+}(React.Component); // TODO: 提供通用的Props， 目前没时间先这样写死
 
 
 var MultiLeafCascader = function MultiLeafCascader(_a) {
@@ -891,9 +912,9 @@ var MultiLeafCascader = function MultiLeafCascader(_a) {
     var allLeafOptions = getAllLeafOptions(options);
     setAllLeafOptions(allLeafOptions);
   }, [options]);
-  return /*#__PURE__*/React.createElement("div", {
+  return React.createElement("div", {
     className: "App"
-  }, /*#__PURE__*/React.createElement(Cascader, {
+  }, React.createElement(Cascader, {
     value: value,
     options: options,
     allLeafOptions: allLeafOptions,
@@ -901,7 +922,7 @@ var MultiLeafCascader = function MultiLeafCascader(_a) {
     getPopupContainer: function getPopupContainer(node) {
       return node;
     }
-  }, /*#__PURE__*/React.createElement(Select, {
+  }, React.createElement(Select__default['default'], {
     value: value,
     placeholder: "\u8BF7\u9009\u62E9",
     mode: "tags",

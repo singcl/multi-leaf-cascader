@@ -8,6 +8,7 @@ module.exports = {
         },
       },
     ],
+    "@babel/preset-react"
   ],
-  plugins: ["@babel/plugin-transform-react-jsx"],
+  plugins: ["@babel/plugin-transform-react-jsx", "@babel/plugin-transform-runtime"],
 };
